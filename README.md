@@ -8,3 +8,6 @@ https://user-images.githubusercontent.com/49339865/166149034-942c38e1-f458-4fe1-
 https://user-images.githubusercontent.com/49339865/166149045-ffae6443-2082-4910-97c7-f7a33c87daca.mp4
 
 对比之前的游戏建模，MetaHumane Creator的渲染效果，可以说已经非常逼近图形学一直追求的以假乱真的CG技术。
+
+![](2022-05-01-22-03-58.png)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">古墓丽影历代劳拉形象</center> 
