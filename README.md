@@ -11,4 +11,4 @@ https://user-images.githubusercontent.com/49339865/166149045-ffae6443-2082-4910-
 
 <img src="2022-05-01-22-03-58.png" width = "100%" />
 
-<center style="font-size:16px;color:#C0C0C0;text-decoration:underline">游戏古墓丽影历代劳拉形象</center> 
+<center>游戏古墓丽影历代劳拉形象</center>
