@@ -42,7 +42,22 @@ https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-
 
 效果上，HeadNeRF可以实时地渲染高清图像级别的人脸头部，且支持直接编辑调整渲染结果的多种语义属性，如身份、表情以及颜色外观等。得益于NeRF结构的引入，HeadNeRF也支持直接编辑调整渲染对象的渲染视角，且不同视角的渲染结果具有优秀的渲染一致性。相关编辑效果如下视频所示。
 
+
+
+https://user-images.githubusercontent.com/49339865/166429217-b007a29c-f8f7-4f1c-80cc-280d7772208b.mp4 
+<p align="center">
+    <em>HeadNeRF: 高帧率版</em>
+</p>
+<br>
+
+https://user-images.githubusercontent.com/49339865/166429658-ac5eb850-3bd9-4bde-bbb3-635af24d69d1.mp4
+<p align="center">
+    <em>HeadNeRF: 高质量版</em>
+</p>
+
+<!--
 https://user-images.githubusercontent.com/49339865/166154233-e0ead7e8-0915-45fd-8b2f-ef50d472dd93.mp4
+-->
 
 HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF没有显式地重建目标场景的几何信息，但其本身通过预测场景的辐射场其实隐式地编码了目标场景的几何结构。进而使得，针对渲染任务，NeRF一定程度上可以等价甚至优于传统的纹理材质网格。且由于NeRF是完全基于神经网络的，因此NeRF的渲染过程是天然可微的，而其他传统的几何表示，如三维网格，点云，体素等则往往需要各种近似策略来缓解相关表示的渲染不可微问题，与之对应的参数化表示工作往往则需要收集并处理大量的三维扫描数据。相对的，HeadNeRF的构建过程只需要二维人脸图片。基于收集的三个大规模人脸头部图片数据集与精心设计的Loss函数与训练策略，所训练出来的HeadNeRF模型可以语义解耦地编辑渲染结果的各种语义属性。
 
