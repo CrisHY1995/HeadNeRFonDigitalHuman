@@ -30,8 +30,7 @@ https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-
 
 ---
 
-基于上述观察，HeadNeRF将NeRF表示应用到虚拟数字人表示，将NeRF和人脸头部参数化表示进行结合，提出了一种高效的基于NeRF的人脸头部参数化模型——HeadNeRF，该模型相关工作已正式被CVPR 2022接受，相关代码已开源。
-
+基于上述观察，中科大张举勇教授课题组提出了HeadNeRF，将NeRF表示应用于虚拟数字人表示，提出了一种基于NeRF的高效全息人脸头部参数化模型，该工作发表于CVPR 2022，相关代码已开源。
 - 文章链接: https://arxiv.org/abs/2112.05637
 - 项目主页: https://crishy1995.github.io/HeadNeRF-Project/
 - 代码链接: https://github.com/CrisHY1995/headnerf
