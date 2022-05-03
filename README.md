@@ -36,7 +36,7 @@ https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-
 - 代码链接: https://github.com/CrisHY1995/headnerf
 
 <p align="center">
-    <img src="images/headnerf.png" alt> <br>
+    <img src="images/teaser_headnerf.png" alt> <br>
     <em>HeadNeRF</em>
 </p>
 
