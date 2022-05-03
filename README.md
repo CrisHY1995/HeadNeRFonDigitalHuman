@@ -1,4 +1,4 @@
-# HeadNeRF：中科大提出高保真人头参数化模型，随意创建与编辑高保真数字人
+# 中科大提出高保真人头参数化模型HeadNeRF，可创建与编辑高保真数字人
 2021年12月份，Epic公司发布了基于它们自家虚幻5打造的《黑客帝国: 觉醒》的演示[Demo](https://www.bilibili.com/video/BV1rY411p7Tg?spm_id_from=333.337.search-card.all.click)。demo中所展示的主演人物的毛孔毛发级高真实感建模，着实让人惊叹Epic的强大技术能力。
 
 https://user-images.githubusercontent.com/49339865/166149034-942c38e1-f458-4fe1-a59d-2d3211c88ca1.mp4
