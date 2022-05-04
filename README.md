@@ -89,7 +89,7 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
 此外，该方法借助In-the-wild的单视角数据集([FFHQ](https://github.com/NVlabs/ffhq-dataset))来进一步增强HeadNeRF的表示能力和泛化能力。得益于所设计的训练策略，HeadNeRF可以同时使用来自不同渠道、不同类型的人脸数据来训练参数化模型。其中，多人多表情(多光照)多视角的人脸头部数据使得HeadNeRF学习人脸头部的几何形状先验、视角一致先验以及语义解耦先验。另一方面，In-the-wild的单视角数据则让HeadNeRF在训练过程中感知更多的身份、表情以及渲染风格类别，从而有效增强其表示、泛化能力。如下图所示，单视角数据集的引入有效提升了HeadNeRF的拟合能力，多人多表情多视角(多光照)数据集提供的相关先验则使HeadNeRF可以进一步解耦地编辑调整拟合结果的各个语义属性和渲染视角。
 
 <p align="center">
-    <img src="images/ffhq_comparison.png" alt> <br>
+    <img src="images/ffhq_comparison_v2.png" alt> <br>
     <em>FFHQ单视角数据的引入有效增强了HeadNeRF的泛化拟合能力</em>
 </p>
 
