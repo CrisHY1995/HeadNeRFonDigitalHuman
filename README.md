@@ -69,7 +69,7 @@ HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF
 另一方面，HeadNeRF也将NeRF体渲染与2D神经渲染相结合，以加速NeRF渲染速度。具体地，代替直接渲染高分辨的人脸头部图片，先是基于NeRF的体渲染管线生成低分辨率、高通道数的特征图(Feature Map)，接着使用特殊设计的2D神经渲染网络层，逐步对上述特征图进行神经上采样，进而输出最终的预测结果。该2D神经渲染模块的引入大幅度提升了原始NeRF体渲染的渲染速度，将NeRF的渲染时间从单帧5s加速到了25ms，且同时很好地保持了NeRF隐式编码的几何结构。如下图所示，针对给定的语义参数组合，连续地编辑调整HeadNeRF的渲染视角、相机距离以及相机视野(FoV)，其相应地生成结果保持了优秀的渲染一致性，这进一步验证了HeadNeRF中2D神经渲染模块的有效性。
 
 <p align="center">
-    <img src="images/changepose.png" alt> <br>
+    <img src="images/changepose_v2.png" alt> <br>
     <em>编辑渲染视角</em>
 </p>
 <p align="center">
