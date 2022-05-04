@@ -72,8 +72,10 @@ HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF
     <img src="images/changepose_v2.png" alt> <br>
     <em>编辑渲染视角</em>
 </p>
+
+
+https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-bb8d-62626c2dfeb6.mp4
 <p align="center">
-    <img src="images/edit_fov.png" alt> <br>
     <em>编辑相机距离和FoV</em>
 </p>
 
