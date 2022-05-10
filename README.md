@@ -59,14 +59,20 @@ https://user-images.githubusercontent.com/49339865/166429658-ac5eb850-3bd9-4bde-
 https://user-images.githubusercontent.com/49339865/166154233-e0ead7e8-0915-45fd-8b2f-ef50d472dd93.mp4
 -->
 
-HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF没有显式地重建目标场景的几何信息，但其本身通过预测场景的辐射场其实隐式地编码了目标场景的几何结构。进而使得，针对渲染任务，NeRF一定程度上可以等价甚至优于传统的纹理材质网格。且由于NeRF是完全基于神经网络的，因此NeRF的渲染过程是天然可微的，而其他传统的几何表示，如三维网格，点云，体素等则往往需要各种近似策略来缓解相关表示的渲染不可微问题，与之对应的参数化表示工作往往则需要收集并处理大量的三维扫描数据。相对的，HeadNeRF的构建过程只需要二维人脸图片。基于收集的三个大规模人脸头部图片数据集与精心设计的Loss函数与训练策略，所训练出来的HeadNeRF模型可以语义解耦地编辑渲染结果的各种语义属性。
+HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF没有显式地重建目标场景的几何信息，但其本身通过预测场景的辐射场其实隐式地编码了目标场景的几何结构。进而使得，针对渲染任务，NeRF一定程度上可以等价甚至优于传统的纹理材质网格。且由于NeRF是完全基于神经网络的，因此NeRF的渲染过程是天然可微的，而其他传统的几何表示，如三维网格，点云，体素等则往往需要各种近似策略来缓解相关表示的渲染不可微问题，与之对应的参数化表示工作往往则需要收集并处理大量的三维扫描数据。相对的，HeadNeRF的构建过程只需要二维人脸图片。
+<!--
+基于收集的三个大规模人脸头部图片数据集与精心设计的Loss函数与训练策略，所训练出来的HeadNeRF模型可以语义解耦地编辑渲染结果的各种语义属性。
+-->
+
+HeadNeRF的表示可概述如下:
+$$I=\mathcal{R}(\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}, P)$$
+这里$$P$$表示相机参数，$$\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}$$分别表示身份、表情、反照率和光照相关的语义向量。$$\mathcal{R}$$表示HeadNeRF的渲染成像过程，$$I$$则为HeadNeRF根据上述输入参数渲染生成的人脸头部图片。HeadNeRF的算法流程图如下所示:
 
 <p align="center">
     <img src="images/headnerf-pipeline.png" alt> <br>
     <em>HeadNeRF-Pipeline</em>
 </p>
-
-另一方面，HeadNeRF也将NeRF体渲染与2D神经渲染相结合，以加速NeRF渲染速度。具体地，代替直接渲染高分辨的人脸头部图片，先是基于NeRF的体渲染管线生成低分辨率、高通道数的特征图(Feature Map)，接着使用特殊设计的2D神经渲染网络层，逐步对上述特征图进行神经上采样，进而输出最终的预测结果。该2D神经渲染模块的引入大幅度提升了原始NeRF体渲染的渲染速度，将NeRF的渲染时间从单帧5s加速到了25ms，且同时很好地保持了NeRF隐式编码的几何结构。如下图所示，针对给定的语义参数组合，连续地编辑调整HeadNeRF的渲染视角、相机距离以及相机视野(FoV)，其相应地生成结果保持了优秀的渲染一致性，这进一步验证了HeadNeRF中2D神经渲染模块的有效性。
+HeadNeRF的表示过程整体上通过conditional-NeRF实现。训练方面，我们则通过收集了三个大规模人脸头部图片数据集，并基于这些数据设计有效的Loss函数来使得HeadNeRF可以语义解耦地编辑渲染结果的各种语义属性。此外，我们也将NeRF体渲染与2D神经渲染相结合，以加速NeRF渲染速度。具体地，代替直接渲染高分辨的人脸头部图片，先是基于NeRF的体渲染管线生成低分辨率、高通道数的特征图(Feature Map)，接着使用特殊设计的2D神经渲染网络层，逐步对上述特征图进行神经上采样，进而输出最终的预测结果。该2D神经渲染模块的引入大幅度提升了原始NeRF体渲染的渲染速度，且同时很好地保持了NeRF隐式编码的几何结构。如下图所示，针对给定的语义参数组合，连续地编辑调整HeadNeRF的渲染视角、相机距离以及相机视野(FoV)，其相应地生成结果保持了优秀的渲染一致性，这进一步验证了HeadNeRF中2D神经渲染模块的有效性。
 
 <p align="center">
     <img src="images/changepose_v2.png" alt> <br>
@@ -82,7 +88,7 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
 此外，2D神经渲染模块的引入也有效改善了NeRF的渲染效率，使得HeadNeRF可以在一般的显卡设备上单次前馈计算获得目标渲染图片的所有像素预测结果。这使得HeadNeRF可以针对预测结果应用全局的或者Instance级别的Loss 约束。在NeRF 的Photometric Loss的基础上，额外地使Perceptual Loss，如下图所示，Perceptual Loss的引入有效提升了HeadNeRF渲染结果的渲染细节。
 
 <p align="center">
-    <img src="images/Perceptual_loss.png" alt> <br>
+    <img src="images/Perceptual_loss_v2.png" alt> <br>
     <em>关于Perceptual Loss的消融实验</em>
 </p>
 
