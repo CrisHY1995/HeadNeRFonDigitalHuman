@@ -93,6 +93,10 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
     <em>FFHQ单视角数据的引入有效增强了HeadNeRF的泛化拟合能力</em>
 </p>
 
+我们在以下视频中展示了HeadNeRF关于更多人脸头部图片的拟合结果，这些图片均来自In-the-wild的采集环境，且完全没有参与 HeadNeRF模型的训练构建。可以发现 HeadNeRF对于图中展示的多类型数据均可进行有效拟合。这一定程度也验证了HeadNeRF的表达能力和泛化能力。
+
+https://user-images.githubusercontent.com/49339865/167671967-e43178f0-6860-4833-89a4-90014fb1ac66.mp4
+
 得益于HeadNeRF高质量的渲染精度、优秀的解耦能力以及实时的渲染速度, 我们可以基于HeadNeRF设计多种相关应用。通过所训练所获得的HeadNeRF模型，可提取输入视频的HeadNeRF表情参数序列以及目标图像的HeadNeRF表示参数，并进一步的将目标图像的表情参数替换为视频的表情参数，从而实现将参考视频中的表情信息迁移至目标图像，从而实现了用视频中的表情来驱动目标图像。相关结果如下所示:
 
 https://user-images.githubusercontent.com/49339865/166154301-fe360d5a-86b9-41e0-9659-6ca32e032cad.mp4
