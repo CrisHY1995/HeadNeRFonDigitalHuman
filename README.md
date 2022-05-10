@@ -65,8 +65,10 @@ HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF
 -->
 
 HeadNeRF的表示可概述如下:
+
 $$I=\mathcal{R}(\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}, P)$$
-这里$$P$$表示相机参数，$$\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}$$分别表示身份、表情、反照率和光照相关的语义向量。$$\mathcal{R}$$表示HeadNeRF的渲染成像过程，$$I$$则为HeadNeRF根据上述输入参数渲染生成的人脸头部图片。HeadNeRF的算法流程图如下所示:
+
+这里$P$表示相机参数，$\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}$分别表示身份、表情、反照率和光照相关的语义向量。$\mathcal{R}$表示HeadNeRF的渲染成像过程，$I$则为HeadNeRF根据上述输入参数渲染生成的人脸头部图片。HeadNeRF的算法流程图如下所示:
 
 <p align="center">
     <img src="images/headnerf-pipeline.png" alt> <br>
