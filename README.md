@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/49339865/166149045-ffae6443-2082-4910-
     <em>游戏古墓丽影历代劳拉形象</em>
 </p>
 
-略有瑕疵的是，尽管MetaHuman构建的虚拟数字人呈现了超逼真的成像渲染效果，但当我们怀着列文虎克的态度去刻意地观察其合成结果，却总是能发现那么几处隐隐难言语的不够真实的地方。不知大家看下图会不会有同样的感觉。
+略有瑕疵的是，尽管MetaHuman构建的虚拟数字人呈现了超逼真的成像渲染效果，但当我们怀着非常较真的态度去刻意地观察其合成结果，却总是能发现那么几处隐隐难言语的不够真实的地方。不知大家看下图会不会有同样的感觉。
 
 ![image](https://user-images.githubusercontent.com/49339865/166150656-2e3fd09e-4764-4fd7-be82-dac4f037d651.png)
 
@@ -105,10 +105,17 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
 
 https://user-images.githubusercontent.com/49339865/167671967-e43178f0-6860-4833-89a4-90014fb1ac66.mp4
 
-得益于HeadNeRF高质量的渲染精度、优秀的解耦能力以及实时的渲染速度, 我们可以基于HeadNeRF设计多种相关应用。通过所训练所获得的HeadNeRF模型，可提取输入视频的HeadNeRF表情参数序列以及目标图像的HeadNeRF表示参数，并进一步的将目标图像的表情参数替换为视频的表情参数，从而实现将参考视频中的表情信息迁移至目标图像，从而实现了用视频中的表情来驱动目标图像。相关结果如下所示:
+得益于HeadNeRF高质量的渲染精度、优秀的解耦能力以及实时的渲染速度, 我们可以基于HeadNeRF设计多种相关应用。通过所训练所获得的HeadNeRF模型，可提取输入视频的HeadNeRF表情参数序列以及目标图像的HeadNeRF表示参数，并进一步的将目标图像的表情参数替换为视频的表情参数，从而实现了用视频中的表情来驱动目标图像。相关结果如下所示:
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/49339865/167761497-3669672c-db30-468d-b35c-e6551dcc7161.png" alt> <br>
+    <em>基于HeadNeRF的表情迁移应用</em>
+</p>
+
+<!--
+![image](https://user-images.githubusercontent.com/49339865/167761497-3669672c-db30-468d-b35c-e6551dcc7161.png)
 https://user-images.githubusercontent.com/49339865/166154301-fe360d5a-86b9-41e0-9659-6ca32e032cad.mp4
-
+-->
 更多结果和介绍，请参考HeadNeRF的[项目主页](https://crishy1995.github.io/HeadNeRF-Project/)与[文章](https://arxiv.org/abs/2112.05637)。
 
 我们相信，基于NeRF的数字人技术还将进一步演化，在不远的将来，关于《黑客帝国: 觉醒》演示中的灵魂发问将变成现实。
