@@ -24,7 +24,7 @@ https://user-images.githubusercontent.com/49339865/166149045-ffae6443-2082-4910-
 
 https://user-images.githubusercontent.com/49339865/166154164-0e4bebbb-5f57-4d93-ae3c-bdce6d9edb44.mp4
 
-NeRF通过神经渲染与神经隐式表示以自适应地学习适合目标渲染对象的渲染方式，这使得NeRF相关的渲染假设少于上述传统的渲染方法的，从而使得NeRF的渲染逻辑与真实世界的渲染更加贴合。感兴趣的读者可以阅读[NeRF原文](https://arxiv.org/abs/2003.08934)来进一步了解相关细节。
+NeRF通过神经渲染与神经隐式表示来自适应地学习适合目标渲染对象的渲染方式，这使得NeRF相关的渲染假设少于上述传统的渲染方法，从而使得NeRF的渲染逻辑与真实世界的渲染更加贴合。感兴趣的读者可以阅读[NeRF原文](https://arxiv.org/abs/2003.08934)来进一步了解相关细节。
 
 https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-9849-ef7604c98302.mp4
 
@@ -40,7 +40,7 @@ https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-
     <em>HeadNeRF</em>
 </p>
 
-效果上，HeadNeRF可以实时地渲染高清图像级别的人脸头部，且支持直接编辑调整渲染结果的多种语义属性，如身份、表情以及颜色外观等。得益于NeRF结构的引入，HeadNeRF也支持直接编辑调整渲染对象的渲染视角，且不同视角的渲染结果具有优秀的渲染一致性。相关编辑效果如下视频所示。
+效果上，HeadNeRF可以实时地渲染高清图像级别的人脸头部，且支持直接编辑调整渲染结果的多种语义属性，如身份、表情以及颜色外观等。得益于NeRF结构的引入，HeadNeRF也支持直接编辑调整渲染对象的渲染视角，同时不同视角的渲染结果具有优秀的渲染一致性。相关编辑效果如下视频所示。
 
 
 
@@ -66,15 +66,20 @@ HeadNeRF的Motivation在于，NeRF本身可看作一种三维表示，尽管NeRF
 
 HeadNeRF的表示可概述如下:
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/49339865/167815171-02c05733-1820-44a6-b676-0b8f17ffd9c4.png" alt> <br>
+</p>
+<!--
 $$I=\mathcal{R}(\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}, P)$$
-
-这里$P$表示相机参数，$\mathbf{z}_\textrm{id}, \mathbf{z}_\textrm{exp}, \mathbf{z}_\textrm{alb}, \mathbf{z}_\textrm{ill}$分别表示身份、表情、反照率和光照相关的语义向量。$\mathcal{R}$表示HeadNeRF的渲染成像过程，$I$则为HeadNeRF根据上述输入参数渲染生成的人脸头部图片。HeadNeRF的算法流程图如下所示:
+-->
+这里P表示相机参数，z_{*}分别表示身份、表情、反照率和光照相关的语义向量。R表示HeadNeRF的渲染成像过程，I则为HeadNeRF根据上述输入参数渲染生成的人脸头部图片。HeadNeRF的算法流程图如下所示:
 
 <p align="center">
     <img src="images/headnerf-pipeline.png" alt> <br>
     <em>HeadNeRF-Pipeline</em>
 </p>
-HeadNeRF的表示过程整体上通过conditional-NeRF实现。训练方面，我们则通过收集了三个大规模人脸头部图片数据集，并基于这些数据设计有效的Loss函数来使得HeadNeRF可以语义解耦地编辑渲染结果的各种语义属性。此外，我们也将NeRF体渲染与2D神经渲染相结合，以加速NeRF渲染速度。具体地，代替直接渲染高分辨的人脸头部图片，先是基于NeRF的体渲染管线生成低分辨率、高通道数的特征图(Feature Map)，接着使用特殊设计的2D神经渲染网络层，逐步对上述特征图进行神经上采样，进而输出最终的预测结果。该2D神经渲染模块的引入大幅度提升了原始NeRF体渲染的渲染速度，且同时很好地保持了NeRF隐式编码的几何结构。如下图所示，针对给定的语义参数组合，连续地编辑调整HeadNeRF的渲染视角、相机距离以及相机视野(FoV)，其相应地生成结果保持了优秀的渲染一致性，这进一步验证了HeadNeRF中2D神经渲染模块的有效性。
+
+HeadNeRF的表示过程整体上通过conditional-NeRF实现。训练方面，我们则通过收集了三个大规模人脸头部图片数据集，并基于这些数据设计有效的Loss函数来使得HeadNeRF可以语义解耦地编辑渲染结果的各种语义属性。此外，我们也将NeRF体渲染与2D神经渲染相结合，以加速NeRF渲染速度。具体地，代替直接渲染高分辨的人脸头部图片，我们先是基于NeRF的体渲染管线生成低分辨率、高通道数的特征图(Feature Map)，接着使用特殊设计的2D神经渲染网络层，逐步对上述特征图进行神经上采样，进而输出最终的预测结果。该2D神经渲染模块的引入大幅度提升了原始NeRF体渲染的渲染速度，且同时很好地保持了NeRF隐式编码的几何结构。如下图所示，针对给定的语义参数组合，连续地编辑调整HeadNeRF的渲染视角、相机距离以及相机视野(FoV)，其相应地生成结果保持了优秀的渲染一致性，这进一步验证了HeadNeRF中2D神经渲染模块的有效性。
 
 <p align="center">
     <img src="images/changepose_v2.png" alt> <br>
@@ -87,14 +92,14 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
     <em>编辑相机距离和FoV</em>
 </p>
 
-此外，2D神经渲染模块的引入也有效改善了NeRF的渲染效率，使得HeadNeRF可以在一般的显卡设备上单次前馈计算获得目标渲染图片的所有像素预测结果。这使得HeadNeRF可以针对预测结果应用全局的或者Instance级别的Loss 约束。在NeRF 的Photometric Loss的基础上，额外地使Perceptual Loss，如下图所示，Perceptual Loss的引入有效提升了HeadNeRF渲染结果的渲染细节。
+此外，2D神经渲染模块的引入也有效改善了NeRF的渲染效率，从而让HeadNeRF可以在一般的显卡设备上单次前馈计算获得目标渲染图片的所有像素预测结果。这使得HeadNeRF可以针对预测结果应用全局的或者Instance级别的Loss 约束。在NeRF 的Photometric Loss的基础上，额外地使Perceptual Loss，如下图所示，Perceptual Loss的引入有效提升了HeadNeRF渲染结果的渲染细节。
 
 <p align="center">
     <img src="images/Perceptual_loss_v2.png" alt> <br>
     <em>关于Perceptual Loss的消融实验</em>
 </p>
 
-在训练HeadNeRF的过程中，我们也借助In-the-wild的单视角数据集([FFHQ](https://github.com/NVlabs/ffhq-dataset))来进一步增强HeadNeRF的表示能力和泛化能力。得益于所设计的训练策略，HeadNeRF可以同时使用来自不同渠道、不同类型的人脸数据来训练参数化模型。其中，多人多表情(多光照)多视角的人脸头部数据使得HeadNeRF学习人脸头部的几何形状先验、视角一致先验以及语义解耦先验。另一方面，In-the-wild的单视角数据则让HeadNeRF在训练过程中感知更多的身份、表情以及渲染风格类别，从而有效增强其表示、泛化能力。如下图所示，单视角数据集的引入有效提升了HeadNeRF的拟合能力，多人多表情多视角(多光照)数据集提供的相关先验则使HeadNeRF可以进一步解耦地编辑调整拟合结果的各个语义属性和渲染视角。
+在训练HeadNeRF的过程中，我们也借助In-the-wild的单视角数据集([FFHQ](https://github.com/NVlabs/ffhq-dataset))来进一步增强HeadNeRF的表示能力和泛化能力。得益于所设计的训练策略，HeadNeRF可以同时使用来自不同渠道、不同类型的人脸数据来训练参数化模型。其中，多人多表情(多光照)多视角的人脸头部数据使得HeadNeRF可以学习人脸头部的几何形状先验、视角一致先验以及语义解耦先验。另一方面，In-the-wild的单视角数据则让HeadNeRF在训练过程中感知更多的身份、表情以及渲染风格类别，从而有效增强其表示、泛化能力。如下图所示，单视角数据集的引入有效提升了HeadNeRF的拟合能力，多人多表情多视角(多光照)数据集提供的相关先验则使HeadNeRF可以进一步解耦地编辑调整拟合结果的各个语义属性和渲染视角。
 
 <p align="center">
     <img src="images/ffhq_comparison_v2.png" alt> <br>
@@ -105,7 +110,7 @@ https://user-images.githubusercontent.com/49339865/166651727-ac14ae03-d1b4-4d8d-
 
 https://user-images.githubusercontent.com/49339865/167671967-e43178f0-6860-4833-89a4-90014fb1ac66.mp4
 
-得益于HeadNeRF高质量的渲染精度、优秀的解耦能力以及实时的渲染速度, 我们可以基于HeadNeRF设计多种相关应用。通过所训练所获得的HeadNeRF模型，可提取输入视频的HeadNeRF表情参数序列以及目标图像的HeadNeRF表示参数，并进一步的将目标图像的表情参数替换为视频的表情参数，从而实现了用视频中的表情来驱动目标图像。相关结果如下所示:
+得益于HeadNeRF高质量的渲染精度、优秀的解耦能力以及实时的渲染速度, 我们可以基于HeadNeRF设计多种相关应用。如通过训练所获得的HeadNeRF模型，可提取输入视频的HeadNeRF表情参数序列以及目标图像的HeadNeRF表示参数，并进一步的将目标图像的表情参数替换为视频的表情参数，从而实现用视频中的表情来驱动目标图像，相关结果如下所示:
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/49339865/167761497-3669672c-db30-468d-b35c-e6551dcc7161.png" alt> <br>
