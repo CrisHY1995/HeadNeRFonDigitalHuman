@@ -1,5 +1,5 @@
 # 中科大提出高保真人头参数化模型HeadNeRF，可创建与编辑高保真数字人
-2021年12月份，Epic公司发布了基于它们自家虚幻5打造的《黑客帝国: 觉醒》的演示[Demo](https://www.bilibili.com/video/BV1rY411p7Tg?spm_id_from=333.337.search-card.all.click)。demo中所展示的主演人物的毛孔毛发级高真实感建模，着实让人惊叹Epic的强大技术能力。
+2021年12月，Epic公司发布了基于它们自家虚幻5打造的《黑客帝国: 觉醒》的演示[Demo](https://www.bilibili.com/video/BV1rY411p7Tg?spm_id_from=333.337.search-card.all.click)。demo中所展示的主演人物的毛孔毛发级高真实感建模，着实让人惊叹Epic的强大技术能力。
 
 https://user-images.githubusercontent.com/49339865/166149034-942c38e1-f458-4fe1-a59d-2d3211c88ca1.mp4
 
@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/49339865/166149045-ffae6443-2082-4910-
     <em>游戏古墓丽影历代劳拉形象</em>
 </p>
 
-略有瑕疵的是，尽管MetaHuman构建的虚拟数字人呈现了超逼真的成像渲染效果，但当我们怀着非常较真的态度去刻意地观察其合成结果，却总是能发现那么几处隐隐难言语的不够真实的地方。不知大家看下图会不会有同样的感觉。
+尽管MetaHuman构建的虚拟数字人呈现了超逼真的成像渲染效果，但当我们怀着较真的态度去刻意观察其合成结果时，总能发现那么几处隐隐难言语的不够真实的地方。不知大家看下图会不会有同样的感觉。
 
 ![image](https://user-images.githubusercontent.com/49339865/166150656-2e3fd09e-4764-4fd7-be82-dac4f037d651.png)
 
