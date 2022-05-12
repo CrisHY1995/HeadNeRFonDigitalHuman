@@ -26,8 +26,12 @@ https://user-images.githubusercontent.com/49339865/166154164-0e4bebbb-5f57-4d93-
 
 NeRF通过神经渲染与神经隐式表示来自适应地学习适合目标渲染对象的渲染方式，这使得NeRF相关的渲染假设少于上述传统的渲染方法，从而使得NeRF的渲染逻辑与真实世界的渲染更加贴合。感兴趣的读者可以阅读[NeRF原文](https://arxiv.org/abs/2003.08934)来进一步了解相关细节。
 
-https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-9849-ef7604c98302.mp4
 
+https://user-images.githubusercontent.com/49339865/168012749-638e2539-d2c2-43b7-88d8-4e51f364d0fd.mp4
+
+<!--
+https://user-images.githubusercontent.com/49339865/166154201-ee3bedfb-04e1-4581-9849-ef7604c98302.mp4
+-->
 ---
 
 基于上述观察，中科大张举勇教授课题组提出了HeadNeRF，一种基于NeRF的高效全息人脸头部参数化模型，该工作发表于CVPR 2022，相关代码已开源。
